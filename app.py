@@ -9,11 +9,11 @@ from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-# app.mount(
-#     "/products", 
-#     StaticFiles(directory="products"), 
-#     name="products"
-# )
+app.mount(
+    "/products", 
+    StaticFiles(directory="products"), 
+    name="products"
+)
 
 create_database()
 
