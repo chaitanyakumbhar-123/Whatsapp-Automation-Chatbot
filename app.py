@@ -30,10 +30,12 @@ def home():
 
 
 @app.get("/chat")
-
 def chat(message: str):
 
-    ai_response = ask_ai(message)
+    ai_response = ask_ai(
+        "test_user",
+        message
+    )
 
     return {
         "user_message": message,
