@@ -149,9 +149,9 @@ async def whatsapp_webhook(
         )
 
         return PlainTextResponse(
-            str(twilio_response),
-            media_type="application/xml"
-        )
+        str(twilio_response),
+        media_type="text/xml"
+    )
     # -------------------------
     # PRICE QUESTIONS
     # -------------------------
@@ -209,9 +209,9 @@ async def whatsapp_webhook(
         )
 
         return PlainTextResponse(
-            str(twilio_response),
-            media_type="application/xml"
-        )
+        str(twilio_response),
+        media_type="text/xml"
+    )
 
     # -------------------------
     # PRODUCT FLOW
@@ -284,9 +284,9 @@ async def whatsapp_webhook(
                 )
 
                 return PlainTextResponse(
-                    str(twilio_response),
-                    media_type="application/xml"
-                )
+                str(twilio_response),
+                media_type="text/xml"
+            )
     # -------------------------
     # GREETING FLOW
     # -------------------------
@@ -322,14 +322,10 @@ async def whatsapp_webhook(
             greeting_response
         )
 
-        response_xml = str(twilio_response)
-
-        print("TWILIO XML:", response_xml)
-
         return PlainTextResponse(
-            response_xml,
-            media_type="application/xml"
-        )
+        str(twilio_response),
+        media_type="text/xml"
+    )
     # -------------------------
     # PRODUCT UNAVAILABLE FLOW
     # -------------------------
@@ -377,9 +373,9 @@ async def whatsapp_webhook(
         )
 
         return PlainTextResponse(
-            str(twilio_response),
-            media_type="application/xml"
-        )
+        str(twilio_response),
+        media_type="text/xml"
+    )
     # -------------------------
     # NORMAL AI RESPONSE
     # -------------------------
@@ -397,5 +393,5 @@ async def whatsapp_webhook(
 
     return PlainTextResponse(
         str(twilio_response),
-        media_type="application/xml"
+        media_type="text/xml"
     )
