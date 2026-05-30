@@ -221,6 +221,20 @@ async def whatsapp_webhook(
         for keyword in product_data["keywords"]:
 
             if keyword in user_message:
+                # Save selected product in memory
+                customer_state["model_name"] = product_name
+
+                save_customer_state(
+                    user_number,
+                    model_name=product_name,
+                    size_ft=customer_state["size_ft"],
+                    dimension_space=customer_state["dimension_space"],
+                    material=customer_state["material"],
+                    uparna_color=customer_state["uparna_color"],
+                    dotar_color=customer_state["dotar_color"],
+                    extra_requirements=customer_state["extra_requirements"],
+                    showcase_sent=customer_state["showcase_sent"]
+                )
 
                 product_response = (
                     f"{product_data['description']}\n\n"
