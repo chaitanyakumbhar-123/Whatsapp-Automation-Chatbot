@@ -159,6 +159,28 @@ def save_customer_state(
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
 
+    # Check existing state
+    existing_state = get_customer_state(user_number)
+
+    if existing_state:
+
+        model_name = model_name if model_name is not None else existing_state["model_name"]
+        size_ft = size_ft if size_ft is not None else existing_state["size_ft"]
+        dimension_space = dimension_space if dimension_space is not None else existing_state["dimension_space"]
+        material = material if material is not None else existing_state["material"]
+        uparna_color = uparna_color if uparna_color is not None else existing_state["uparna_color"]
+        dotar_color = dotar_color if dotar_color is not None else existing_state["dotar_color"]
+        extra_requirements = (
+            extra_requirements
+            if extra_requirements is not None
+            else existing_state["extra_requirements"]
+        )
+        showcase_sent = (
+            showcase_sent
+            if showcase_sent is not None
+            else existing_state["showcase_sent"]
+        )
+
     cursor.execute("""
     INSERT OR REPLACE INTO customer_state (
         user_number,
@@ -181,12 +203,11 @@ def save_customer_state(
         uparna_color,
         dotar_color,
         extra_requirements,
-        showcase_sent
+        int(showcase_sent) if showcase_sent is not None else 0
     ))
 
     conn.commit()
     conn.close()
-
 
 def reset_customer_state(user_number):
 
