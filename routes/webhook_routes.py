@@ -239,7 +239,7 @@ async def whatsapp_webhook(
                         image_message = twilio_response.message()
 
                         image_message.media(
-                            f"https://overtone-tarmac-flying.ngrok-free.dev/{image_path}"
+                            f"https://whatsapp-automation-chatbot-production.up.railway.app/{image_path}"
                         )
 
                     # Mark showcase as sent
