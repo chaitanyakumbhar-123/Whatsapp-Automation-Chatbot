@@ -287,6 +287,40 @@ async def whatsapp_webhook(
                 str(twilio_response),
                 media_type="text/xml"
             )
+
+    # -------------------------
+    # CUSTOMER STATE FLOW
+    # -------------------------
+    if customer_state["model_name"]:
+
+        if customer_state["size_ft"] is None:
+
+            customer_state["size_ft"] = Body
+
+            save_customer_state(
+                user_number,
+                size_ft=Body
+            )
+
+            response = (
+                "Chhan 😊\n"
+                "POP ki Shadu Mati pahije?"
+            )
+
+            twilio_response.message(response)
+
+            save_message(
+                user_number,
+                "assistant",
+                response
+            )
+
+            return PlainTextResponse(
+                str(twilio_response),
+                media_type="text/xml"
+            )
+
+
     # -------------------------
     # GREETING FLOW
     # -------------------------
