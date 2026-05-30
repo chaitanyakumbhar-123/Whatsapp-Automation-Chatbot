@@ -322,8 +322,12 @@ async def whatsapp_webhook(
             greeting_response
         )
 
+        response_xml = str(twilio_response)
+
+        print("TWILIO XML:", response_xml)
+
         return PlainTextResponse(
-            str(twilio_response),
+            response_xml,
             media_type="application/xml"
         )
     # -------------------------
