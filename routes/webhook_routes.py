@@ -304,8 +304,6 @@ async def whatsapp_webhook(
 
     if any(keyword in user_message for keyword in greeting_keywords):
 
-        print("Reached greeting flow")
-
         greeting_response = (
             "Namaskar 😊\n\n"
             "Aamchyakade sundar koriv Ganpati, "
@@ -322,10 +320,12 @@ async def whatsapp_webhook(
             greeting_response
         )
 
+        print(str(twilio_response))
+
         return PlainTextResponse(
-        str(twilio_response),
-        media_type="text/xml"
-    )
+            str(twilio_response),
+            media_type="text/xml"
+        )
     # -------------------------
     # PRODUCT UNAVAILABLE FLOW
     # -------------------------
